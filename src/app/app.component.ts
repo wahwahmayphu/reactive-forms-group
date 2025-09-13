@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,23 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'reactive-forms-group-test';
+
+  
+  profileForm = new FormGroup({
+    name: new FormControl('mp'),
+    password: new FormControl('123'),
+    email: new FormControl('mp@test.com'),
+  });
+  
+  submitData(){
+    console.log(this.profileForm.value);
+  }
+
+  setValues() {
+    this.profileForm.setValue({
+      name: 'peter',
+      password: '123',
+      email: 'peter.test.com'
+    })
+  }
 }
